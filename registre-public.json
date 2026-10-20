@@ -1,1 +1,12 @@
-{}
+{
+ "44c6522f60148678aba03e9f76bb8635b93ca88380c0b70f43c4364914edbcd9": {
+  "date": "2026-10-20",
+  "langues": "az>fr",
+  "type": "Acte de naissance",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "49a1da697ec533e3dc6fbe2892d2ee60f6429a25a854c4fc14e17c60d3cb578d",
+  "statut": "valide",
+  "motif": ""
+ }
+}
