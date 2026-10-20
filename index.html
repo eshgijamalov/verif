@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vérification des traductions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+body{margin:0}
+/* Layout: one narrow registry column — header, number lookup, result "acte" card, file check, explanation. */
+:root {
+  --bg: #f6f7f8;
+  --paper: #ffffff;
+  --ink: #17212b;
+  --muted: #5b6672;
+  --line: #d9dee3;
+  --accent: #1d4f73;      /* encre bleue des tampons */
+  --accent-soft: #e6eef5;
+  --ok: #1f6b45;  --ok-soft: #e4f2ea;
+  --bad: #9b2c2c; --bad-soft: #f8e7e7;
+  --warn: #8a5a00; --warn-soft: #fbf0d9;
+  --f-display: "IBM Plex Serif", Georgia, serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11161b; --paper: #182028; --ink: #e7ecf0; --muted: #9aa6b2; --line: #2b3640;
+  --accent: #8cbbe0; --accent-soft: #1d2c39;
+  --ok: #7fd1a5; --ok-soft: #173327; --bad: #f0a0a0; --bad-soft: #3a1d1f; --warn: #e8c068; --warn-soft: #362b14;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11161b; --paper: #182028; --ink: #e7ecf0; --muted: #9aa6b2; --line: #2b3640;
+  --accent: #8cbbe0; --accent-soft: #1d2c39;
+  --ok: #7fd1a5; --ok-soft: #173327; --bad: #f0a0a0; --bad-soft: #3a1d1f; --warn: #e8c068; --warn-soft: #362b14;
+  color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 640px; margin: 0 auto; padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 22px; }
+
+header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+.who { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.eyebrow { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: 26px; line-height: 1.2; margin: 4px 0 0; text-wrap: balance; }
+.sub { color: var(--muted); font-size: 14px; }
+.langs { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.langs button { font: 500 12px var(--f-body); letter-spacing: .04em; border: 0; background: transparent; color: var(--muted); padding: 6px 10px; cursor: pointer; }
+.langs button + button { border-left: 1px solid var(--line); }
+.langs button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
+
+.panel { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+label { font-weight: 500; font-size: 14px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+input[type=text] { flex: 1 1 220px; min-width: 0; font: 500 17px var(--f-mono); letter-spacing: .04em; text-transform: uppercase;
+  padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+input[type=text]:focus, button:focus-visible, .drop:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn { font: 600 14px var(--f-body); padding: 10px 18px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: var(--paper); cursor: pointer; }
+.hint { font-size: 13px; color: var(--muted); }
+.demo { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--muted); }
+.demo button { font: 500 12.5px var(--f-mono); padding: 4px 9px; border-radius: 5px; border: 1px dashed var(--line); background: transparent; color: var(--accent); cursor: pointer; }
+
+/* Résultat : présenté comme une fiche de registre */
+.result { border-radius: 8px; border: 1px solid var(--line); background: var(--paper); overflow: hidden; }
+.verdict { display: flex; gap: 14px; align-items: center; padding: 16px 20px; }
+.verdict .mark { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; border: 2px solid currentColor; }
+.verdict .mark svg { width: 20px; height: 20px; }
+.verdict strong { display: block; font-family: var(--f-display); font-size: 19px; font-weight: 600; line-height: 1.25; }
+.verdict span { font-size: 14px; }
+.is-ok .verdict { background: var(--ok-soft); color: var(--ok); }
+.is-bad .verdict { background: var(--bad-soft); color: var(--bad); }
+.is-warn .verdict { background: var(--warn-soft); color: var(--warn); }
+dl { margin: 0; padding: 6px 20px 16px; display: grid; grid-template-columns: minmax(120px, auto) 1fr; column-gap: 20px; }
+dt, dd { padding: 9px 0; border-bottom: 1px solid var(--line); margin: 0; }
+dt { color: var(--muted); font-size: 13.5px; }
+dd { font-weight: 500; min-width: 0; overflow-wrap: anywhere; }
+dl > :nth-last-child(-n+2) { border-bottom: 0; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.compare { padding: 12px 20px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
+
+.drop { border: 1.5px dashed var(--line); border-radius: 8px; padding: 18px; text-align: center; cursor: pointer; color: var(--muted); font-size: 14px; }
+.drop.over { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.filecheck { font-size: 14px; padding: 10px 12px; border-radius: 6px; }
+.filecheck.ok { background: var(--ok-soft); color: var(--ok); }
+.filecheck.bad { background: var(--bad-soft); color: var(--bad); }
+.hash { font: 12px var(--f-mono); color: var(--muted); overflow-wrap: anywhere; }
+
+.about { font-size: 13.5px; color: var(--muted); display: flex; flex-direction: column; gap: 8px; max-width: 62ch; }
+.about h2 { font: 600 14px var(--f-body); color: var(--ink); margin: 0; }
+.about p { margin: 0; }
+@media (prefers-reduced-motion: no-preference) { .result { animation: rise .25s ease-out; } @keyframes rise { from { transform: translateY(4px); } } }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="who">
+      <span class="eyebrow" data-t="eyebrow"></span>
+      <h1 data-t="title"></h1>
+      <span class="sub" id="sub"></span>
+    </div>
+    <div class="langs" role="group" aria-label="Langue">
+      <button type="button" data-lang="fr">FR</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="tr">TR</button><button type="button" data-lang="az">AZ</button>
+    </div>
+  </header>
+
+  <form class="panel" id="form">
+    <label for="num" data-t="label"></label>
+    <div class="row">
+      <input type="text" id="num" autocomplete="off" spellcheck="false" placeholder="2026-0001-XXXX">
+      <button class="btn" type="submit" data-t="verify"></button>
+    </div>
+    <span class="hint" data-t="hint"></span>
+    <div class="demo" id="demo" hidden><span data-t="demo"></span></div>
+  </form>
+
+  <section id="out" aria-live="polite"></section>
+
+  <section class="panel" id="filepanel" hidden>
+    <label for="file" data-t="fileLabel"></label>
+    <div class="drop" id="drop" tabindex="0" role="button" data-t="drop"></div>
+    <input type="file" id="file" accept="application/pdf" hidden>
+    <div id="fileout"></div>
+  </section>
+
+  <section class="about">
+    <h2 data-t="aboutTitle"></h2>
+    <p data-t="about1"></p>
+    <p data-t="about2"></p>
+  </section>
+</div>
+
+<script>
+const CONFIG = {
+  nom: "Eshgi Jamalov",
+  qualite: {
+    fr: "Expert traducteur-interprète près la cour d'appel de Poitiers",
+    en: "Sworn translator-interpreter, Court of Appeal of Poitiers (France)",
+    tr: "Poitiers İstinaf Mahkemesi nezdinde yeminli tercüman",
+    az: "Puatye Apellyasiya Məhkəməsi yanında and içmiş tərcüməçi"
+  },
+  site: "https://academie-traduction.fr"
+};
+// Registre de démonstration intégré (null sur le vrai site : la page lit registre-public.json)
+const REGISTRE_DEMO = /*REGISTRE_DEMO*/null;
+const NUMEROS_DEMO = /*NUMEROS_DEMO*/[];
+
+const T = {
+  fr: { eyebrow: "Registre des traductions", title: "Vérifier une traduction",
+    label: "Numéro de la traduction", verify: "Vérifier",
+    hint: "Il figure en bas de chaque page, à côté du QR code (ex. 2026-0001-K7QX).",
+    demo: "Numéros d'exemple :",
+    ok: "Traduction authentique", okSub: "Inscrite au registre du traducteur et toujours valide.",
+    cancelled: "Traduction annulée", cancelledSub: "Ce numéro existe mais n'est plus valide.",
+    notfound: "Numéro introuvable", notfoundSub: "Aucune traduction ne correspond. Vérifiez la saisie ; en cas de doute, contactez le traducteur.",
+    invalid: "Format incorrect", invalidSub: "Le numéro a la forme 2026-0001-K7QX.",
+    error: "Registre indisponible", errorSub: "Le registre n'a pas pu être chargé. Réessayez plus tard.",
+    number: "Numéro", date: "Date", langs: "Langues", type: "Document", pages: "Pages de la traduction", orig: "Pages de l'original", reason: "Motif",
+    compare: "Comparez ces informations avec l'exemplaire que vous avez en main. Si le type de document, la date ou le nombre de pages ne correspondent pas, l'exemplaire n'est pas authentique.",
+    fileLabel: "Vous avez reçu la traduction en PDF ? Vérifiez qu'elle n'a pas été modifiée.",
+    drop: "Déposez le PDF ici ou cliquez pour le choisir. Le fichier reste sur votre appareil.",
+    fileOk: "Le fichier est identique à l'original délivré.", fileBad: "Le fichier ne correspond pas à l'original délivré : il a été modifié ou ce n'est pas le bon document.",
+    aboutTitle: "Ce que vérifie cette page",
+    about1: "Chaque traduction est inscrite au registre du traducteur sous un numéro unique, avec le type de document, la date, les langues et le nombre de pages. Aucune donnée personnelle n'est publiée.",
+    about2: "La certification de la traduction repose sur la signature et le cachet du traducteur apposés sur le document. Cette page permet seulement d'en confirmer l'origine." },
+  en: { eyebrow: "Translation register", title: "Verify a translation",
+    label: "Translation number", verify: "Verify",
+    hint: "It is printed at the bottom of every page, next to the QR code (e.g. 2026-0001-K7QX).",
+    demo: "Sample numbers:",
+    ok: "Authentic translation", okSub: "Recorded in the translator's register and still valid.",
+    cancelled: "Cancelled translation", cancelledSub: "This number exists but is no longer valid.",
+    notfound: "Number not found", notfoundSub: "No translation matches. Check the number; if in doubt, contact the translator.",
+    invalid: "Wrong format", invalidSub: "Numbers look like 2026-0001-K7QX.",
+    error: "Register unavailable", errorSub: "The register could not be loaded. Please try again later.",
+    number: "Number", date: "Date", langs: "Languages", type: "Document", pages: "Pages (translation)", orig: "Pages (original)", reason: "Reason",
+    compare: "Compare these details with the copy you hold. If the document type, date or page count differ, the copy is not authentic.",
+    fileLabel: "Received the translation as a PDF? Check that it has not been altered.",
+    drop: "Drop the PDF here or click to choose it. The file stays on your device.",
+    fileOk: "The file is identical to the original issued.", fileBad: "The file does not match the original issued: it has been altered or is a different document.",
+    aboutTitle: "What this page checks",
+    about1: "Each translation is recorded in the translator's register under a unique number, with the document type, date, languages and page count. No personal data is published.",
+    about2: "The translation is certified by the translator's signature and seal on the document itself. This page only confirms where it came from." },
+  tr: { eyebrow: "Tercüme sicili", title: "Tercüme doğrulama",
+    label: "Tercüme numarası", verify: "Doğrula",
+    hint: "Her sayfanın altında, QR kodun yanında yer alır (örn. 2026-0001-K7QX).",
+    demo: "Örnek numaralar:",
+    ok: "Tercüme geçerlidir", okSub: "Tercümanın siciline kayıtlı ve hâlâ geçerli.",
+    cancelled: "Tercüme iptal edilmiştir", cancelledSub: "Bu numara mevcut ancak artık geçerli değil.",
+    notfound: "Numara bulunamadı", notfoundSub: "Eşleşen tercüme yok. Numarayı kontrol edin; şüphe halinde tercümanla iletişime geçin.",
+    invalid: "Hatalı biçim", invalidSub: "Numara 2026-0001-K7QX biçimindedir.",
+    error: "Sicile ulaşılamıyor", errorSub: "Sicil yüklenemedi. Lütfen daha sonra tekrar deneyin.",
+    number: "Numara", date: "Tarih", langs: "Diller", type: "Belge", pages: "Tercüme sayfa sayısı", orig: "Asıl belge sayfa sayısı", reason: "Gerekçe",
+    compare: "Bu bilgileri elinizdeki nüshayla karşılaştırın. Belge türü, tarih veya sayfa sayısı uyuşmuyorsa nüsha geçerli değildir.",
+    fileLabel: "Tercümeyi PDF olarak mı aldınız? Değiştirilmediğini kontrol edin.",
+    drop: "PDF dosyasını buraya bırakın veya seçmek için tıklayın. Dosya cihazınızdan çıkmaz.",
+    fileOk: "Dosya, teslim edilen asılla aynıdır.", fileBad: "Dosya teslim edilen asılla uyuşmuyor: değiştirilmiş veya farklı bir belge.",
+    aboutTitle: "Bu sayfa neyi doğrular",
+    about1: "Her tercüme, tercümanın siciline benzersiz bir numarayla, belge türü, tarih, diller ve sayfa sayısıyla kaydedilir. Hiçbir kişisel veri yayımlanmaz.",
+    about2: "Tercümenin onayı, belge üzerindeki tercüman imzası ve mührüne dayanır. Bu sayfa yalnızca belgenin kaynağını teyit eder." },
+  az: { eyebrow: "Tərcümələr reyestri", title: "Tərcümənin yoxlanılması",
+    label: "Tərcümənin nömrəsi", verify: "Yoxla",
+    hint: "Hər səhifənin altında, QR kodun yanında göstərilir (məs. 2026-0001-K7QX).",
+    demo: "Nümunə nömrələr:",
+    ok: "Tərcümə həqiqidir", okSub: "Tərcüməçinin reyestrində qeydə alınıb və hələ də qüvvədədir.",
+    cancelled: "Tərcümə ləğv edilib", cancelledSub: "Bu nömrə mövcuddur, lakin artıq etibarlı deyil.",
+    notfound: "Nömrə tapılmadı", notfoundSub: "Uyğun tərcümə yoxdur. Nömrəni yoxlayın; şübhə olarsa, tərcüməçi ilə əlaqə saxlayın.",
+    invalid: "Yanlış format", invalidSub: "Nömrə 2026-0001-K7QX formatındadır.",
+    error: "Reyestr əlçatan deyil", errorSub: "Reyestr yüklənmədi. Bir az sonra yenidən cəhd edin.",
+    number: "Nömrə", date: "Tarix", langs: "Dillər", type: "Sənəd", pages: "Tərcümənin səhifə sayı", orig: "Əslin səhifə sayı", reason: "Səbəb",
+    compare: "Bu məlumatları əlinizdəki nüsxə ilə müqayisə edin. Sənədin növü, tarixi və ya səhifə sayı uyğun gəlmirsə, nüsxə həqiqi deyil.",
+    fileLabel: "Tərcüməni PDF şəklində almısınız? Dəyişdirilmədiyini yoxlayın.",
+    drop: "PDF faylını bura atın və ya seçmək üçün klikləyin. Fayl cihazınızdan çıxmır.",
+    fileOk: "Fayl təqdim edilmiş əsl ilə eynidir.", fileBad: "Fayl təqdim edilmiş əsl ilə uyğun gəlmir: dəyişdirilib və ya başqa sənəddir.",
+    aboutTitle: "Bu səhifə nəyi yoxlayır",
+    about1: "Hər tərcümə tərcüməçinin reyestrində unikal nömrə ilə, sənədin növü, tarixi, dilləri və səhifə sayı ilə qeydə alınır. Heç bir şəxsi məlumat dərc edilmir.",
+    about2: "Tərcümənin təsdiqi sənəd üzərindəki tərcüməçinin imzası və möhürünə əsaslanır. Bu səhifə yalnız sənədin mənbəyini təsdiqləyir." }
+};
+const LANGNAMES = {
+  fr: { az: "azerbaïdjanais", tr: "turc", fr: "français", en: "anglais", ru: "russe" },
+  en: { az: "Azerbaijani", tr: "Turkish", fr: "French", en: "English", ru: "Russian" },
+  tr: { az: "Azerbaycan Türkçesi", tr: "Türkçe", fr: "Fransızca", en: "İngilizce", ru: "Rusça" },
+  az: { az: "Azərbaycan dili", tr: "Türk dili", fr: "Fransız dili", en: "İngilis dili", ru: "Rus dili" }
+};
+const ICONS = {
+  ok: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10.5l4 4 8-9"/></svg>',
+  bad: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 5l10 10M15 5L5 15"/></svg>',
+  warn: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M10 4v8M10 15.5v.5"/></svg>'
+};
+
+let lang = "fr", registre = REGISTRE_DEMO, current = null, lastQuery = "";
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+async function sha256Hex(data) {
+  const buf = typeof data === "string" ? new TextEncoder().encode(data) : data;
+  const h = await crypto.subtle.digest("SHA-256", buf);
+  return [...new Uint8Array(h)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+function fmtDate(iso) {
+  const loc = { fr: "fr-FR", en: "en-GB", tr: "tr-TR", az: "az-Latn-AZ" }[lang];
+  try { return new Date(iso + "T12:00:00").toLocaleDateString(loc, { day: "numeric", month: "long", year: "numeric" }); } catch { return iso; }
+}
+function fmtLangs(s) {
+  const n = LANGNAMES[lang], [a, b] = String(s).split(">").map(x => x.trim().toLowerCase());
+  return b ? `${n[a] || a} → ${n[b] || b}` : s;
+}
+
+function applyLang(l) {
+  lang = l;
+  try { localStorage.setItem("verif-lang", l); } catch {}
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-t]").forEach(el => { el.textContent = T[l][el.dataset.t]; });
+  document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  $("#sub").textContent = `${CONFIG.nom} · ${CONFIG.qualite[l]}`;
+  if (lastQuery) render(current, lastQuery);
+}
+
+async function loadRegistre() {
+  if (registre) return registre;
+  const r = await fetch("registre-public.json", { cache: "no-store" });
+  if (!r.ok) throw new Error(r.status);
+  return (registre = await r.json());
+}
+
+function render(state, num) {
+  const t = T[lang], out = $("#out");
+  const kinds = { ok: ["is-ok", "ok", t.ok, t.okSub], cancelled: ["is-warn", "warn", t.cancelled, t.cancelledSub],
+    notfound: ["is-bad", "bad", t.notfound, t.notfoundSub], invalid: ["is-bad", "bad", t.invalid, t.invalidSub], error: ["is-bad", "warn", t.error, t.errorSub] };
+  const [cls, icon, head, sub] = kinds[state.kind];
+  let html = `<div class="result ${cls}"><div class="verdict"><div class="mark">${ICONS[icon]}</div><div><strong>${esc(head)}</strong><span>${esc(sub)}</span></div></div>`;
+  const e = state.entry;
+  if (e) {
+    html += `<dl>
+      <dt>${t.number}</dt><dd class="mono">${esc(num)}</dd>
+      <dt>${t.type}</dt><dd>${esc(e.type)}</dd>
+      <dt>${t.date}</dt><dd>${esc(fmtDate(e.date))}</dd>
+      <dt>${t.langs}</dt><dd>${esc(fmtLangs(e.langues))}</dd>
+      <dt>${t.pages}</dt><dd class="mono">${esc(e.pages)}</dd>
+      ${e.pages_original ? `<dt>${t.orig}</dt><dd class="mono">${esc(e.pages_original)}</dd>` : ""}
+      ${e.statut !== "valide" && e.motif ? `<dt>${t.reason}</dt><dd>${esc(e.motif)}</dd>` : ""}
+    </dl>`;
+    if (e.statut === "valide") html += `<div class="compare">${esc(t.compare)}</div>`;
+  }
+  out.innerHTML = html + "</div>";
+  $("#filepanel").hidden = !(e && e.statut === "valide" && e.empreinte);
+  $("#fileout").innerHTML = "";
+}
+
+async function verify(raw) {
+  const num = raw.trim().toUpperCase().replace(/\s+/g, "");
+  if (!num) return;
+  lastQuery = num;
+  if (!/^\d{4}-\d{4}-[A-Z0-9]{4}$/.test(num)) { current = { kind: "invalid" }; return render(current, num); }
+  try {
+    const reg = await loadRegistre();
+    const e = reg[await sha256Hex(num)];
+    current = !e ? { kind: "notfound" } : { kind: e.statut === "valide" ? "ok" : "cancelled", entry: e };
+  } catch { current = { kind: "error" }; }
+  render(current, num);
+}
+
+async function checkFile(file) {
+  if (!file || !current?.entry) return;
+  const h = await sha256Hex(await file.arrayBuffer());
+  const same = h === current.entry.empreinte;
+  $("#fileout").innerHTML = `<div class="filecheck ${same ? "ok" : "bad"}">${esc(same ? T[lang].fileOk : T[lang].fileBad)}</div><div class="hash">SHA-256 : ${h}</div>`;
+}
+
+$("#form").addEventListener("submit", ev => { ev.preventDefault(); verify($("#num").value); });
+document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+const drop = $("#drop"), fileIn = $("#file");
+drop.addEventListener("click", () => fileIn.click());
+drop.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fileIn.click(); } });
+fileIn.addEventListener("change", () => checkFile(fileIn.files[0]));
+["dragenter", "dragover"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", e => checkFile(e.dataTransfer.files[0]));
+
+// Démarrage : langue du navigateur, puis numéro passé par le QR code (?n=...)
+let start = "fr";
+try { start = localStorage.getItem("verif-lang") || ""; } catch {}
+if (!T[start]) { const nav = (navigator.language || "fr").slice(0, 2); start = T[nav] ? nav : "fr"; }
+applyLang(start);
+if (NUMEROS_DEMO.length) {
+  const d = $("#demo"); d.hidden = false;
+  NUMEROS_DEMO.forEach(n => { const b = document.createElement("button"); b.type = "button"; b.textContent = n;
+    b.addEventListener("click", () => { $("#num").value = n; verify(n); }); d.appendChild(b); });
+}
+const fromUrl = new URLSearchParams(location.search).get("n") || (NUMEROS_DEMO[0] || "");
+if (fromUrl) { $("#num").value = fromUrl; verify(fromUrl); }
+</script>
+
+</body>
+</html>
