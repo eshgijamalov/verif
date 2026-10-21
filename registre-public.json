@@ -58,5 +58,15 @@
   "empreinte": "5bf20869373f147097481cc85e29317672784ad3196b6815ff766245dfbc83d2",
   "statut": "valide",
   "motif": ""
+ },
+ "3f8c2d03a5d9913109d0563b7087e7ebd51586004832a84fc6e20d467574c044": {
+  "date": "2026-10-21",
+  "langues": "az>fr",
+  "type": "épicrise",
+  "pages": 3,
+  "pages_original": null,
+  "empreinte": "fa72333e4f67d63266921f9b219b1c473dc527fc0cc5f792f9d3a3a83e66a679",
+  "statut": "valide",
+  "motif": ""
  }
 }
