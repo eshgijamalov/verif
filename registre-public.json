@@ -66,8 +66,8 @@
   "pages": 3,
   "pages_original": null,
   "empreinte": "fa72333e4f67d63266921f9b219b1c473dc527fc0cc5f792f9d3a3a83e66a679",
-  "statut": "valide",
-  "motif": ""
+  "statut": "annulee",
+  "motif": "doublon"
  },
  "00744cd83eb23664e0099120064627aa9e26f0d636b719943f048dbbde807ccb": {
   "date": "2026-10-21",
