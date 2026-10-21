@@ -218,9 +218,17 @@ async function sha256Hex(data) {
   const h = await crypto.subtle.digest("SHA-256", buf);
   return [...new Uint8Array(h)].map(b => b.toString(16).padStart(2, "0")).join("");
 }
+// Mois écrits à la main : tous les téléphones ne connaissent pas l'azéri ou le turc
+const MONTHS = {
+  fr: ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],
+  en: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+  tr: ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"],
+  az: ["yanvar","fevral","mart","aprel","may","iyun","iyul","avqust","sentyabr","oktyabr","noyabr","dekabr"]
+};
 function fmtDate(iso) {
-  const loc = { fr: "fr-FR", en: "en-GB", tr: "tr-TR", az: "az-Latn-AZ" }[lang];
-  try { return new Date(iso + "T12:00:00").toLocaleDateString(loc, { day: "numeric", month: "long", year: "numeric" }); } catch { return iso; }
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ""));
+  if (!m) return iso;
+  return `${Number(m[3])} ${MONTHS[lang].at(Number(m[2]) - 1)} ${m[1]}`;
 }
 function fmtLangs(s) {
   const n = LANGNAMES[lang], [a, b] = String(s).split(">").map(x => x.trim().toLowerCase());
