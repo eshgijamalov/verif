@@ -178,5 +178,15 @@
   "empreinte": "2259b09fe7a741ac066f9061b349b164f3581ba8ea4e805afdf043d64783256d",
   "statut": "valide",
   "motif": ""
+ },
+ "424641b144a38bca0611a49f2e1ee767c59554b4b2478569e8b6090e83bca9d9": {
+  "date": "2026-10-25",
+  "langues": "az>fr",
+  "type": "Lettre de recommandation",
+  "pages": 4,
+  "pages_original": null,
+  "empreinte": "bd7a2dfc039f60dac0604a2b853da816bf0844746ab87553f9a287845cea5bcc",
+  "statut": "valide",
+  "motif": ""
  }
 }
