@@ -88,5 +88,15 @@
   "empreinte": "333487b10d7dc61e92c2984599595e241487e63d026983f1404e64f031ad1c92",
   "statut": "valide",
   "motif": ""
+ },
+ "bc20378a1dc02a709485dc5ee1a947d9ab410fe3d656b2b5f31c25e66de2981e": {
+  "date": "2026-10-25",
+  "langues": "az>fr",
+  "type": "Diplome de licence + apostille",
+  "pages": 2,
+  "pages_original": null,
+  "empreinte": "9128ad675c65db944618d941703d9696a9bc59ebbedde89420e3baab912dfb1f",
+  "statut": "valide",
+  "motif": ""
  }
 }
