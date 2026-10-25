@@ -148,5 +148,15 @@
   "empreinte": "16040d6e243497ecd37c6af955ded000f8d6777543493aa54bce472f10f2104a",
   "statut": "valide",
   "motif": ""
+ },
+ "af078177cac0934f1cf7202e004d64ca4a7cd078cc63250b9fced023744fac32": {
+  "date": "2026-10-25",
+  "langues": "az>fr",
+  "type": "Contrat de prestation de services de commissaire d'exposition",
+  "pages": 5,
+  "pages_original": null,
+  "empreinte": "4c066989c3c65dfc6bf3ca1c9489246faaed5e046012828fddd4b344b7986d8d",
+  "statut": "valide",
+  "motif": ""
  }
 }
