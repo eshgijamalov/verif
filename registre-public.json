@@ -108,5 +108,15 @@
   "empreinte": "82ac535576d936abefbf5014a621a909c1eb9171286d41a26caa4495593230bf",
   "statut": "valide",
   "motif": ""
+ },
+ "bed9612b7a9663ab5fcdd3301692862e0e5748fc30c5e77503a4e3bd561a2140": {
+  "date": "2026-10-25",
+  "langues": "az>fr",
+  "type": "Contrat d'exposition et de vente d'oeuvres n 0506 Boutique Hotels Company",
+  "pages": 4,
+  "pages_original": null,
+  "empreinte": "ebf7eeb4856e3d25ca9d3d3cc506c97e93cd9b818b5f5d1fe27e1be9a78995b6",
+  "statut": "valide",
+  "motif": ""
  }
 }
