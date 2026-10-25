@@ -128,5 +128,15 @@
   "empreinte": "74638c097b1f4953767ef124986940c1871d9a898b499545a0afc4b7e1b606cf",
   "statut": "valide",
   "motif": ""
+ },
+ "687a346d56689105116ee3a6cdcbb8f34d0b73092a1916de8a0436135597b3d0": {
+  "date": "2026-10-25",
+  "langues": "az>fr",
+  "type": "64325 - Contrat d'exposition et de vente d'oeuvres n 15-04-26 19 Catering",
+  "pages": 5,
+  "pages_original": null,
+  "empreinte": "0fae829142709a537a71ea4ae733dd0b7cc2ba5cc9a0a9a75377477d9f20a766",
+  "statut": "valide",
+  "motif": ""
  }
 }
