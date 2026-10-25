@@ -188,5 +188,15 @@
   "empreinte": "bd7a2dfc039f60dac0604a2b853da816bf0844746ab87553f9a287845cea5bcc",
   "statut": "valide",
   "motif": ""
+ },
+ "021b9355938effe3b791b064cf6be32110398ce73e4d4c5c8aa0dc0bfb2c624f": {
+  "date": "2026-10-25",
+  "langues": "az>fr",
+  "type": "Acte de mariage",
+  "pages": 2,
+  "pages_original": null,
+  "empreinte": "a2a8ee2e78ab8b6a5da33352ce2036e079e79da7d86b7f2c0a22dec39a2c6cdc",
+  "statut": "valide",
+  "motif": ""
  }
 }
