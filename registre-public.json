@@ -238,5 +238,15 @@
   "empreinte": "14ccdf27a8183d7e1469f23014f738149a22bc0fdb8fb0efa76caccb2d7587e7",
   "statut": "valide",
   "motif": ""
+ },
+ "5cd1ddf3e9666bb5a44d78df79f1bdbcfdcb2eecb2c0d22539984f0c5da6620c": {
+  "date": "2026-10-27",
+  "langues": "az>fr",
+  "type": "Lettre de soutien",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "48cb3f26f5cac590d026d1112888820a9579e3885059b281b609c652809a48e0",
+  "statut": "valide",
+  "motif": ""
  }
 }
