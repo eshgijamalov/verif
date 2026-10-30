@@ -278,5 +278,15 @@
   "empreinte": "c0226a1728ded01c4afe847df9b538c3bdbb04ad8b80a532b61055fab8bb9b80",
   "statut": "valide",
   "motif": ""
+ },
+ "3820b0eacead4c2b0167999a06070cb37c45d3bc9c4ee07f5717c64335daedf1": {
+  "date": "2026-10-30",
+  "langues": "az>fr",
+  "type": "annexe au diplome master",
+  "pages": 2,
+  "pages_original": null,
+  "empreinte": "ff8770f1c08ecce8976be7c780257d7ef958242e971b25f7bcf0f04144965f04",
+  "statut": "valide",
+  "motif": ""
  }
 }
