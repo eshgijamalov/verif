@@ -298,5 +298,15 @@
   "empreinte": "3cac0b6bb90979637d53eacde8050528fd178d7c6b688e59f5392b2fd4dff403",
   "statut": "valide",
   "motif": ""
+ },
+ "7af254656fdbd76b55775b4abdefd0d9ada1fadcf8a5fd4f49f6e971321039ec": {
+  "date": "2026-10-31",
+  "langues": "az>fr",
+  "type": "notification audience",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "637384b02026b2970fd9a41e09fdb99de2e66914ee138cfeedd03b35ff385542",
+  "statut": "valide",
+  "motif": ""
  }
 }
