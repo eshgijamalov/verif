@@ -308,5 +308,15 @@
   "empreinte": "637384b02026b2970fd9a41e09fdb99de2e66914ee138cfeedd03b35ff385542",
   "statut": "valide",
   "motif": ""
+ },
+ "f7c1db5561d85615931611f8d946d0541918c1a5f409b9e500512182d7afe6de": {
+  "date": "2026-10-31",
+  "langues": "az>fr",
+  "type": "Jugement-cour des crimes graves",
+  "pages": 5,
+  "pages_original": null,
+  "empreinte": "6d04686e83b274a56d64fe5b1932f3037cc5a0be8807f82d21b568c1aa10f84d",
+  "statut": "valide",
+  "motif": ""
  }
 }
