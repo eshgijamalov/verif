@@ -368,5 +368,15 @@
   "empreinte": "d343794d61fde4e7bae5083272e7ec8e493ec800b08e7564c6881c9821369381",
   "statut": "valide",
   "motif": ""
+ },
+ "c5653d426c230b25e8a492ccb720e36d0a206649c8d6123d2102c702d4eb474a": {
+  "date": "2026-11-02",
+  "langues": "az>fr",
+  "type": "Acte de naissance",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "46c5035098c8e13365a6e8b95fa48949fbeabf4bca5c7d7924e39d05035de66f",
+  "statut": "valide",
+  "motif": ""
  }
 }
