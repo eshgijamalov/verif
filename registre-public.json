@@ -428,5 +428,15 @@
   "empreinte": "6c98ff9c626c55d215aeb6fc8e71a643092021440fd5903f781bd5007303bf59",
   "statut": "valide",
   "motif": ""
+ },
+ "03091265883376d22fc3a0181d8c21dfcd4516d7dc0be12875e7be6d38db06b9": {
+  "date": "2026-11-06",
+  "langues": "az>fr",
+  "type": "Lettre du Parquet general",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "be5ee8404f666f5b0996cc3f7f1cec402eadd9514e72ad04096ed6059918e872",
+  "statut": "valide",
+  "motif": ""
  }
 }
