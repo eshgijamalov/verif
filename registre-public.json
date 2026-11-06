@@ -438,5 +438,15 @@
   "empreinte": "be5ee8404f666f5b0996cc3f7f1cec402eadd9514e72ad04096ed6059918e872",
   "statut": "valide",
   "motif": ""
+ },
+ "e4668c7a68fd1fbe3352520fe360d96312d30a7a2859a52927476518d44ab086": {
+  "date": "2026-11-06",
+  "langues": "az>fr",
+  "type": "Lettre de l'Ombudsman",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "cbd9b78f93e52fddd54bace6173a71f8ca9cf91e7a9c29e9feb9ccbdfc9e09bd",
+  "statut": "valide",
+  "motif": ""
  }
 }
