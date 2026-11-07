@@ -468,5 +468,15 @@
   "empreinte": "9119ca02963346016a03a53f0a8e3d458006ffa0532e0aab3f76c963aa4e9464",
   "statut": "valide",
   "motif": ""
+ },
+ "29f671e9838f2abbce7167dee8fd91968f5b693625197ba96b181e9c6740131c": {
+  "date": "2026-11-07",
+  "langues": "az>fr",
+  "type": "Decision Cour supreme 23.06.2017",
+  "pages": 3,
+  "pages_original": null,
+  "empreinte": "7910f325d5f0e9a1b2592e5b339fb425f321cb3f6a1770683bc4437a508d448f",
+  "statut": "valide",
+  "motif": ""
  }
 }
