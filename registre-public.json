@@ -488,5 +488,15 @@
   "empreinte": "c5a699df4f457854db604543e922c6e5057d6573a974fce2272424b5011765c1",
   "statut": "valide",
   "motif": ""
+ },
+ "2dce3b3cf435c7c7fd396bb76e232bb9d1d1ae580b0e8b01a5431ea336b5708f": {
+  "date": "2026-11-07",
+  "langues": "az>fr",
+  "type": "Decision Cour supreme penale 30.08.2017",
+  "pages": 5,
+  "pages_original": null,
+  "empreinte": "90375e2162779dd44f4c6e5f9b44b31606bc7a32fc2e83574efdba9cba6cfca5",
+  "statut": "valide",
+  "motif": ""
  }
 }
