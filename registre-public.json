@@ -458,5 +458,15 @@
   "empreinte": "ac8fc7592be0882eab0359d5cdb02ed84ace7edb3f8fa4ac978754f2b47323c7",
   "statut": "valide",
   "motif": ""
+ },
+ "0392a6b961d589551a91295e28cd4018654f8a7a3847097f6c9a9c766cf86a59": {
+  "date": "2026-11-07",
+  "langues": "az>fr",
+  "type": "Decision Cour d'appel de Bakou 17.09.2015",
+  "pages": 5,
+  "pages_original": null,
+  "empreinte": "9119ca02963346016a03a53f0a8e3d458006ffa0532e0aab3f76c963aa4e9464",
+  "statut": "valide",
+  "motif": ""
  }
 }
