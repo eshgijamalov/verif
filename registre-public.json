@@ -508,5 +508,15 @@
   "empreinte": "8d478b70f53dfa87e02a172f4116cb85d3ef91f0a858a44b095376857c8592e0",
   "statut": "valide",
   "motif": ""
+ },
+ "64111b7ad32ac11692ac6c7fdb277171c7212da8a7bd794a06b8a03e0bc719ba": {
+  "date": "2026-11-08",
+  "langues": "az>fr",
+  "type": "Decision tribunal de Binagadi 08.06.2023",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "7c260c98481dddb0e8ae6159331a845e4d67c8bed095363877c000999e62f7af",
+  "statut": "valide",
+  "motif": ""
  }
 }
