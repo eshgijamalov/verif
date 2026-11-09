@@ -578,5 +578,15 @@
   "empreinte": "0c640f53248e6ad0a509f6a2e0a3147f9ff270a440313158956f0c0a460f3bbe",
   "statut": "valide",
   "motif": ""
+ },
+ "478cb98a526fc82c8fbcece52415d54507e80db88d20154d7cca3888a524213f": {
+  "date": "2026-11-09",
+  "langues": "az>fr",
+  "type": "Attestation medicale hopital de Guba",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "c0e4e7991fcc75938bbd28cb255dda0b0e483e9b5144139799cd825c3f4dbb91",
+  "statut": "valide",
+  "motif": ""
  }
 }
