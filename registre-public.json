@@ -588,5 +588,15 @@
   "empreinte": "c0e4e7991fcc75938bbd28cb255dda0b0e483e9b5144139799cd825c3f4dbb91",
   "statut": "valide",
   "motif": ""
+ },
+ "a22249c8a65a3695f624f8fd476f07810682875360380b14bd7dc8d9a81e34bd": {
+  "date": "2026-11-09",
+  "langues": "az>fr",
+  "type": "Convocation police de Guba",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "5eaf0a1199ae9819c03bade82f77844e386ffc68a4217c5e46ab3e72b9e82e94",
+  "statut": "valide",
+  "motif": ""
  }
 }
