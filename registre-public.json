@@ -558,5 +558,15 @@
   "empreinte": "7a2e93d06f228b626f11a0b64f182afa6a90414f00b30035698afc5b218dfd11",
   "statut": "valide",
   "motif": ""
+ },
+ "8005b3ea6583f2eb7356e32b2cf124e256c2ce8fde9e11bcabf5820978357a55": {
+  "date": "2026-11-09",
+  "langues": "az>fr",
+  "type": "diplome de licence",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "53f67feb34cab65378d422b7b3a421b19a03686c93aadbed652b7dfff43e2ad6",
+  "statut": "valide",
+  "motif": ""
  }
 }
