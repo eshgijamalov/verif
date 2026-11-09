@@ -538,5 +538,15 @@
   "empreinte": "c6b84fd89f400e2277e6540d9df61a8685da34006225907740c33736c1967ae4",
   "statut": "valide",
   "motif": ""
+ },
+ "b9ed38cc59b681478a11e4c2bc7d6d342b4e35af5b220d126a82e90e05462887": {
+  "date": "2026-11-09",
+  "langues": "az>fr",
+  "type": "Annexe au diplome de licence",
+  "pages": 2,
+  "pages_original": null,
+  "empreinte": "b405da1ac14afb5c8e4913722b03b93ccf88ce6a25b05d80a3a4ca3dcfbec9ad",
+  "statut": "valide",
+  "motif": ""
  }
 }
