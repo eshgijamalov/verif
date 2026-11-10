@@ -598,5 +598,15 @@
   "empreinte": "5eaf0a1199ae9819c03bade82f77844e386ffc68a4217c5e46ab3e72b9e82e94",
   "statut": "valide",
   "motif": ""
+ },
+ "c5e114091644af6d1fa9317be68edf062ea5bbee3f460f134ad635cad54f883b": {
+  "date": "2026-11-10",
+  "langues": "az>fr",
+  "type": "déclaration personnelle",
+  "pages": 2,
+  "pages_original": null,
+  "empreinte": "6642f879a8ba426614ca0335eb78d40bcdf9ebff47639cdbb926f66660efe291",
+  "statut": "valide",
+  "motif": ""
  }
 }
