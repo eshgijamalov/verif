@@ -658,5 +658,15 @@
   "empreinte": "bd0b754f9691055b715ce344fa3d2fdcdbbd7ca6cb5b3878a8355078e4b553ce",
   "statut": "valide",
   "motif": ""
+ },
+ "bfeebe187e59198bee2202e0708fa10e7e2a33a82da21d7fb9fe93053305e7fe": {
+  "date": "2026-11-15",
+  "langues": "az>fr",
+  "type": "Declaration de temoin",
+  "pages": 2,
+  "pages_original": null,
+  "empreinte": "998a3b357f234675fd362a0e2e30655f6880eceb82797e6ebc2f20e3bd19fc0f",
+  "statut": "valide",
+  "motif": ""
  }
 }
