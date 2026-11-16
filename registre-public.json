@@ -718,5 +718,15 @@
   "empreinte": "34db0f04a6a33dabb6a7afd7aeaa42db8274e40fe28caf320ae7756a64db5e86",
   "statut": "valide",
   "motif": ""
+ },
+ "c4a043c9dc97c1cbc1e27d7a6cd7c6f722d756d15c8843ec333db4599b057323": {
+  "date": "2026-11-16",
+  "langues": "az>fr",
+  "type": "CNI et declaration",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "21e58df4f2d08c9d42f1e04a82ba7cdf6b2cae61a06d7a52b6c07e044d15a57e",
+  "statut": "valide",
+  "motif": ""
  }
 }
