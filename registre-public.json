@@ -688,5 +688,15 @@
   "empreinte": "e5687c8a764224a2f1ee57fe10bd6397263b8f0596201fb04397a3ffe28d5141",
   "statut": "valide",
   "motif": ""
+ },
+ "9ce7cff4e986f956f34473442eaf85a7475163a8ea3fb15d809e11ff295e4e87": {
+  "date": "2026-11-16",
+  "langues": "az>fr",
+  "type": "Carte d'identité",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "d8193e31e47f37e5caa6451a334e81a56b3bf0e14bd05b3c999f999eec508a2c",
+  "statut": "valide",
+  "motif": ""
  }
 }
