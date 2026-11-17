@@ -768,5 +768,15 @@
   "empreinte": "1ea4e5f380bb6430b67455893da2103f7e75bc800795442c006b2ae3f181069a",
   "statut": "valide",
   "motif": ""
+ },
+ "064115e1274675ee5b61e6e32240ac0d3322e0b11ba0b090b3e7e6daa33aa585": {
+  "date": "2026-11-17",
+  "langues": "az>fr",
+  "type": "Avis de recherche",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "6b2e4c3c18490b932ff96e311581ed8aee5ce56661f3ca9b784c25f44868b453",
+  "statut": "valide",
+  "motif": ""
  }
 }
