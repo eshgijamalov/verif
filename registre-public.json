@@ -788,5 +788,15 @@
   "empreinte": "189f77ecbd8c4a3a59c8e051151a2672864ff93eabddb19fdc94966ffd34a008",
   "statut": "valide",
   "motif": ""
+ },
+ "a08dcd10692ddd577e608759b1031b470026605a176aa01d61a0827c7dfba47e": {
+  "date": "2026-11-21",
+  "langues": "az>fr",
+  "type": "article de presse sonxeberler.info",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "ceea5bbb6e75ec47e6afaedaafae695a397f5155a11b5abf1ed84eda93b14c7c",
+  "statut": "valide",
+  "motif": ""
  }
 }
