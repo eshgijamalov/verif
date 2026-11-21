@@ -808,5 +808,15 @@
   "empreinte": "4884580890eea25c1143f7f222ef47229a7c03e56840e51c37cd79d4a8cfc38f",
   "statut": "valide",
   "motif": ""
+ },
+ "bcc795ad5600517e31cebb990704a784965c18a75ca26518638283efa3c5bccb": {
+  "date": "2026-11-21",
+  "langues": "az>fr",
+  "type": "jugement tribunal",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "6ef2cedfce21ceb7b3a39d6f7725604b927a219c5addbc3d8c30fd5347091169",
+  "statut": "valide",
+  "motif": ""
  }
 }
