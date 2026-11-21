@@ -798,5 +798,15 @@
   "empreinte": "ceea5bbb6e75ec47e6afaedaafae695a397f5155a11b5abf1ed84eda93b14c7c",
   "statut": "valide",
   "motif": ""
+ },
+ "b8ea09434c4178fd977b8c6bcd9aa04acbed680c5595911b6f0fca7bf70bdbe2": {
+  "date": "2026-11-21",
+  "langues": "az>fr",
+  "type": "enveloppe recommandée",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "4884580890eea25c1143f7f222ef47229a7c03e56840e51c37cd79d4a8cfc38f",
+  "statut": "valide",
+  "motif": ""
  }
 }
