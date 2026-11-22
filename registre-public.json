@@ -908,5 +908,15 @@
   "empreinte": "f79c1a0ea7da069d4dc82076ccb8d975f0b2c7789bf3bc959f95c4986219763d",
   "statut": "valide",
   "motif": ""
+ },
+ "9fb99f89dfe63a42a2448fcd88e6b6b089392d54c2efee71234a582393963757": {
+  "date": "2026-11-22",
+  "langues": "az>fr",
+  "type": "CNI+déclaration",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "2a1b37a26b85a0f1d84d80487bdf1bc87fafb9b5508a188b6975230f3eabf5a8",
+  "statut": "valide",
+  "motif": ""
  }
 }
