@@ -928,5 +928,15 @@
   "empreinte": "244d0e1666e137d99a2e007978f2c0851f302f7e6dd225ceb877cdd59dada08d",
   "statut": "valide",
   "motif": ""
+ },
+ "70e5ad0406242e5af1a0b375af1f52592874c85af4ded955922e6d898e31ea6e": {
+  "date": "2026-11-23",
+  "langues": "az>fr",
+  "type": "Permis de conduire",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "3b8164aad9963abb28ca677f9f30dacf30e0b8510eb1008d330a5ddfc1b031aa",
+  "statut": "valide",
+  "motif": ""
  }
 }
