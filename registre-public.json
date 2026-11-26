@@ -948,5 +948,15 @@
   "empreinte": "cf3fdcb6546306b0d6eb824663c9b043dc412789773a3eef8d3e8a4b69f2f565",
   "statut": "valide",
   "motif": ""
+ },
+ "a3b213eee1bc834146e01571ee394472f0031e463fd8c6deb24181b8919a3e37": {
+  "date": "2026-11-26",
+  "langues": "az>fr",
+  "type": "Acte de décès",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "455ad9912d7220e2ce3de89dbb85c2e3d277946121211c36b06ee615f4627867",
+  "statut": "valide",
+  "motif": ""
  }
 }
