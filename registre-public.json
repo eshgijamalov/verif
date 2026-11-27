@@ -958,5 +958,15 @@
   "empreinte": "455ad9912d7220e2ce3de89dbb85c2e3d277946121211c36b06ee615f4627867",
   "statut": "valide",
   "motif": ""
+ },
+ "ebf10f3919d1d30cd0fa529568dcae1212f9f111403f70dc32084aef66196a6e": {
+  "date": "2026-11-27",
+  "langues": "tr>fr",
+  "type": "Mandat de detention",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "8c51c8b41b26b570d51cafcee5cd4ef86764f2e2c296e085a1b5a934d7073d50",
+  "statut": "valide",
+  "motif": ""
  }
 }
