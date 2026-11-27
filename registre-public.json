@@ -968,5 +968,15 @@
   "empreinte": "8c51c8b41b26b570d51cafcee5cd4ef86764f2e2c296e085a1b5a934d7073d50",
   "statut": "valide",
   "motif": ""
+ },
+ "8e69fd64d6cccb3e01ba033faa5dde989fe2b07f7c3097dbf970a323e6e195c5": {
+  "date": "2026-11-27",
+  "langues": "tr>fr",
+  "type": "Permis de conduire",
+  "pages": 1,
+  "pages_original": null,
+  "empreinte": "0240adec7d83cb351fd8904fec3fb82c02e6a870846fda46c420088340cddbbb",
+  "statut": "valide",
+  "motif": ""
  }
 }
